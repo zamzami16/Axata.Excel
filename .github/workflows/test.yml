@@ -51,11 +51,11 @@ jobs:
       run: dotnet build Axata.Excel.Tests/Axata.Excel.Tests.csproj --configuration Release --no-restore
 
     - name: Pack
-      run: dotnet pack Axata.Excel.Tests/Axata.Excel.Tests.csproj --configuration Release --no-restore --property:PackageoutputPath="$PWD/nupkg"
+      run: dotnet pack Axata.Excel/Axata.Excel.csproj --configuration Release --no-restore --output ./nupkg
 
     - name: Push to NuGet
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      working-directory: ./nupkg
       run: dotnet nuget push "*.nupkg" --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
-      working-directory : nupkg
         
