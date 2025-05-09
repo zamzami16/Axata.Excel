@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axata.Excel", "Axata.Excel\Axata.Excel.csproj", "{FA890A76-0B99-9E7A-A50A-68EE364C0144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axata.Excel.Tests", "Axata.Excel.Tests\Axata.Excel.Tests.csproj", "{0A14F5F2-8928-4F52-A71C-339558F929E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA890A76-0B99-9E7A-A50A-68EE364C0144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA890A76-0B99-9E7A-A50A-68EE364C0144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA890A76-0B99-9E7A-A50A-68EE364C0144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA890A76-0B99-9E7A-A50A-68EE364C0144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A14F5F2-8928-4F52-A71C-339558F929E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A14F5F2-8928-4F52-A71C-339558F929E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A14F5F2-8928-4F52-A71C-339558F929E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A14F5F2-8928-4F52-A71C-339558F929E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51E2E9B1-43FB-4135-8666-3E89E51E197D}
+	EndGlobalSection
+EndGlobal
