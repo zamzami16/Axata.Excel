@@ -1,0 +1,61 @@
+name: .NET CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install dependencies
+      run: dotnet restore Axata.Excell.Tests/Axata.Excel.Tests.csproj
+
+    - name: Build
+      run: dotnet build Axata.Excell.Tests/Axata.Excel.Tests.csproj --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test Axata.Excell.Tests/Axata.Excel.Tests.csproj --no-restore --verbosity normal
+
+  release:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install dependencies
+      run: dotnet restore Axata.Excell.Tests/Axata.Excel.Tests.csproj
+
+    - name: Build
+      run: dotnet build Axata.Excell.Tests/Axata.Excel.Tests.csproj --configuration Release --no-restore
+
+    - name: Pack
+      run: dotnet pack Axata.Excell.Tests/Axata.Excel.Tests.csproj --configuration Release --no-restore --property:PackageoutputPath="$PWD/nupkg"
+
+    - name: Push to NuGet
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push "*.nupkg" --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+      working-directory : nupkg
+        
